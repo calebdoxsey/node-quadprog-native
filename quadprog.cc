@@ -9,7 +9,7 @@
 using namespace v8;
 using namespace node;
 
-extern void qpgen1(
+extern "C" void qpgen1(
 	double *dmat, double *dvec, int *fddmat, int *n,
 	double *sol, double *lagr, double *crval,
 	double *amat, int *iamat, double *bvec, int *fdamat, int *q,
@@ -17,7 +17,7 @@ extern void qpgen1(
 	double *work, int *ierr
 );
 
-extern void qpgen2_(
+extern "C" void qpgen2_(
 	double *dmat, double *dvec, int *fddmat, int *n,
 	double *sol, double *lagr, double *crval,
 	double *amat, double *bvec, int *fdamat, int *q,
@@ -25,7 +25,7 @@ extern void qpgen2_(
 	double *work, int *ierr
 );
 
-extern void aind(
+extern "C" void aind(
 	int *ind, int *m, int *q, int *n, int *ok
 );
 
@@ -229,6 +229,18 @@ Handle<Value> Solve(Matrix* D, Vector* d, Matrix* A1, Vector* b1, Matrix* A2, Ve
       work->Elements(),
       &error
     );
+
+    if (error == 1) {
+      result = VException("The supplied constraints are inconsistent");
+    } else if (error == 2) {
+      result = VException("The D matrix must be positive-definite in order for this algorithm to work.");
+    } else {
+      Handle<Array> arr = Local<Array>(Array::New(sol->Length()));
+      for (int i=0; i<sol->Length(); i++) {
+        arr->Set(i, Number::New(sol->Get(i)));
+      }
+      result = arr;
+    }
 
     delete[] iter;
     delete work;

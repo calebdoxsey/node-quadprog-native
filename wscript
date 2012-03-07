@@ -36,4 +36,4 @@ def build(bld):
   for f in fortran_libs:
     obj.linkflags.append( "Release/" + f + ".o")
   obj.target = "quadprog"
-  obj.source = "quadprog.cc"
+  obj.source = "src/quadprog.cc"

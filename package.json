@@ -1,0 +1,10 @@
+{
+  "name": "quadprog",
+  "description": "Node.js bindings for quadprog",
+  "version": "0.0.1",
+  "author": "Caleb Doxsey <caleb@doxsey.net>",
+  "main": "build/default/quadprog.node",
+  "scripts": {
+    "test": "node test.js"
+  }
+}

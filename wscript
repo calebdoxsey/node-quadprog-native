@@ -25,7 +25,7 @@ def build(bld):
         name = f
       )
   else:
-    bold.add_group("cp")
+    bld.add_group("cp")
     for f in fortran_libs:
       bld(
         rule = "cp ${SRC} ${TGT}",

@@ -1,3 +1,3 @@
-var quadprog = require('./build/Release/quadprog.node');
+var quadprog = require(__dirname + '/build/Release/quadprog.node');
 
 exports.solve = quadprog.solve;

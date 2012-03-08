@@ -1,6 +1,6 @@
 srcdir = "."
 blddir = "build"
-VERSION = "0.0.1"
+VERSION = "0.0.2"
 
 def set_options(opt):
   opt.tool_options("compiler_cxx")
@@ -21,6 +21,15 @@ def build(bld):
       bld(
         rule = bld.env['FC'] + " -fPIC -o ${TGT} -c ${SRC}",
         source = 'src/' + f + '.f',
+        target = f + '.o',
+        name = f
+      )
+  else:
+    bold.add_group("cp")
+    for f in fortran_libs:
+      bld(
+        rule = "cp ${SRC} ${TGT}",
+        source = 'obj/' + f + '.o',
         target = f + '.o',
         name = f
       )

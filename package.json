@@ -1,11 +1,15 @@
 {
   "name": "quadprog-native",
   "description": "Node.js bindings for quadprog",
-  "version": "0.0.3",
+  "version": "0.0.4",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/Chromatical/node-quadprog-native.git"
+  },
   "engines": {
     "node": "0.6.x"
   },
-  "author": "Caleb Doxsey <caleb@doxsey.net>",
+  "author": "Caleb Doxsey <cdoxsey@chromatical.com>",
   "main": "index.js",
   "scripts": {
     "test": "node test.js"

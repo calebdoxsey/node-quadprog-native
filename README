@@ -1,0 +1,3 @@
+These are native bindings to the R quadprog library (written in Fortran). Precompiled x64 obj files are included.
+
+License is MIT, the underlying libraries are GPL: http://cran.r-project.org/web/packages/quadprog/index.html and BSD: http://www.netlib.org/lapack/.
